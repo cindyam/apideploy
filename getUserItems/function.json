@@ -1,0 +1,30 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route": "useritem/"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "userItemRecord",
+      "databaseName": "user",
+      "collectionName": "userItems",
+      "createIfNotExists": false,
+      "connectionStringSetting": "cindyan_DOCUMENTDB",
+      "partitionKey": "/userid"
+    }
+  ],
+  "scriptFile": "../dist/getUserItems/index.js"
+}
